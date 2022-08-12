@@ -1,108 +1,54 @@
-# Unit 9 Homework: Employee Database
+# Employee Database
+Our database consists of six tables including:
 
-## Background
+**Titles**
 
-It’s a beautiful spring day, and it’s been two weeks since you were hired as a new data engineer at Pewlett Hackard. Your first major task is a research project on employees of the corporation from the 1980s and 1990s. All that remains of the database of employees from that period are six CSV files.
+**Employees**
 
-In this assignment, you will design the tables to hold data in the CSVs, import the CSVs into a SQL database, and answer questions about the data. In other words, you will perform **data modeling**, **data engineering**, and **data analysis**.
-## Before You Begin
+**Departments**
 
-1. Create a new repository for this project called `sql-challenge`. **Do not add this homework assignment to an existing repository**.
+**Department Managers**
 
-2. Clone the new repository to your computer.
+**Department Employee**
 
-3. Inside your local Git repository, create a directory for the SQL challenge. Use a folder name that corresponds to this assignment, like `EmployeeSQL`.
+**Salaries**
 
-4. Add your files to this folder.
+# Entity Relationship Diagram
+These tables are connected through multiple keys
 
-5. Push these changes to GitHub.
+![QuickDBD-Free Diagram (1)](https://user-images.githubusercontent.com/100164773/184416942-e4f1b930-7af7-4254-bd96-940e0da2202d.png)
 
-## Instructions
+# Data Analysis
+8 queries and their results
 
-This assignment is divided into three parts: data modeling, data engineering, and data analysis. 
+1. List the following details of each employee: [data-1660327555753.csv](https://github.com/john-mcmullan/sql-challenge/files/9329022/data-1660327555753.csv)
+2. List of all employees hired in 1986: [data-1660327555753.csv](https://github.com/john-mcmullan/sql-challenge/files/9329045/data-1660327555753.csv)
+3. List of all Department Managers: [data-1660327838623.csv](https://github.com/john-mcmullan/sql-challenge/files/9329052/data-1660327838623.csv)
+4. All Employees and their Deparment: [data-1660327913101.csv](https://github.com/john-mcmullan/sql-challenge/files/9329056/data-1660327913101.csv)
+5. All Employees with the name "Hercules B.": [data-1660328193278.csv](https://github.com/john-mcmullan/sql-challenge/files/9329078/data-1660328193278.csv)
+6.  All Sales Employees: [data-1660327967952.csv](https://github.com/john-mcmullan/sql-challenge/files/9329060/data-1660327967952.csv)
+7. All Sales and Development Employees: [data-1660328043329.csv](https://github.com/john-mcmullan/sql-challenge/files/9329061/data-1660328043329.csv)
+8. Counts of Unique Last Names: [data-1660328115787.csv](https://github.com/john-mcmullan/sql-challenge/files/9329069/data-1660328115787.csv)
 
-#### Data Modeling
+# Analytical Graphs
+There are unusual numbers appearing in the tables leading to the belief there are some errors in the numbers
 
-Inspect the CSVs and sketch out an ERD of the tables. Feel free to use a tool like [http://www.quickdatabasediagrams.com](http://www.quickdatabasediagrams.com).
+The histogram shows that most of the employees make in the range of $40,000-$50,000. It is unusual but does not prove anything is fake.
 
-#### Data Engineering
-
-* Use the provided information to create a table schema for each of the six CSV files. Remember to specify data types, primary keys, foreign keys, and other constraints.
-
-  * For the primary keys, verify that the column is unique. Otherwise, create a [composite key](https://en.wikipedia.org/wiki/Compound_key), which takes two primary keys to uniquely identify a row.
-
-  * Be sure to create tables in the correct order to handle foreign keys.
-
-* Import each CSV file into the corresponding SQL table. 
-
-  > **Hint:** To avoid errors, be sure to import the data in the same order that the tables were created. Also remember to account for the headers when importing.
-
-#### Data Analysis
-
-Once you have a complete database, perform these steps:
-
-1. List the following details of each employee: employee number, last name, first name, sex, and salary.
-
-2. List first name, last name, and hire date for employees who were hired in 1986.
-
-3. List the manager of each department with the following information: department number, department name, the manager's employee number, last name, first name.
-
-4. List the department of each employee with the following information: employee number, last name, first name, and department name.
-
-5. List first name, last name, and sex for employees whose first name is "Hercules" and last names begin with "B."
-
-6. List all employees in the Sales department, including their employee number, last name, first name, and department name.
-
-7. List all employees in the Sales and Development departments, including their employee number, last name, first name, and department name.
-
-8. List the frequency count of employee last names (i.e., how many employees share each last name) in descending order.
-
-## Bonus (Optional)
-
-As you examine the data, you begin to suspect that the dataset is fake. Maybe your boss gave you spurious data in order to test the data engineering skills of a new employee? To confirm your hunch, you decide to create a visualization of the data to present to your boss. Follow these steps: 
-
-1. Import the SQL database into Pandas. (Yes, you could read the CSVs directly in Pandas, but you are, after all, trying to prove your technical mettle.) This step may require some research. Feel free to use the following code to get started. Be sure to make any necessary modifications for your username, password, host, port, and database name:
-
-   ```sql
-   from sqlalchemy import create_engine
-   engine = create_engine('postgresql://localhost:5432/<your_db_name>')
-   connection = engine.connect()
-   ```
-
-    * Consult the [SQLAlchemy documentation](https://docs.sqlalchemy.org/en/latest/core/engines.html#postgresql) for more information.
-
-    * If you’re using a password, do not upload your password to your GitHub repository. Review this [video](https://www.youtube.com/watch?v=2uaTPmNvH0I) and the [GitHub website](https://help.github.com/en/github/using-git/ignoring-files) for more information.
-
-2. Create a histogram to visualize the most common salary ranges for employees.
-
-3. Create a bar chart of average salary by title.
+![image](https://user-images.githubusercontent.com/100164773/184421550-899c3e7f-70ba-490c-a2d0-8152d53dc09e.png)
 
 
-## Submission
+The Average salary data is where we see inconsistancy
 
-* Create an image file of your ERD.
+![image](https://user-images.githubusercontent.com/100164773/184421932-b2cda32e-de65-4a55-829f-8ecc4b0fe498.png)
 
-* Create a `.sql` file of your table schemata.
 
-* Create a `.sql` file of your queries.
+There are 2 inconsistancies
 
-* (Optional) Create a Jupyter notebook of the bonus analysis.
+1. The label senior staff and staff are ambigous and could include engineers, managers, or any other title
+2. Assistant Engineers are make more than both Engineers and Senior Engineers. Senior Staff are make more than staff on average
 
-* Create and upload a repository with the above files to GitHub and post a link on BootCamp Spot.
 
-* Ensure your repository has regular commits and a thorough README.md file
+![image](https://user-images.githubusercontent.com/100164773/184421828-40a609ea-c4aa-471f-adf1-93fca0d33537.png)
 
-## Rubric
-
-[Unit 9 Homework Rubric](https://docs.google.com/document/d/1OksnTYNCT0v0E-VkhIMJ9-iG0_oXNwCZAJlKV0aVMKQ/edit?usp=sharing)
-
-- - -
-
-## References
-
-Mockaroo, LLC. (2021). Realistic Data Generator. [https://www.mockaroo.com/](https://www.mockaroo.com/)
-
-- - -
-
-© 2022 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
-
+These inconsistancies leads to the belief that the salary information as been altered.
